@@ -49,6 +49,7 @@ function Card({value, state, handleClick}) {
 export default function Game() {
 	const [cardValues, setCardValues] = useState(generateCards(NUM_PAIRS));
 	const [cardStates, setCardStates] = useState(Array(NUM_PAIRS * 2).fill(CARD_STATE_NOT_FLIPPED));
+	const [bestScore, setBestScore] = useState(null);
 	const [trials, setTrials] = useState(0);
 	const [matchedPairs, setMatchedPairs] = useState(0);
 
@@ -82,6 +83,11 @@ export default function Game() {
 				newCardStates[lastFlipped] = newCardStates[i] = CARD_STATE_MATCHED;
 				setCardStates(newCardStates);
 				setMatchedPairs(matchedPairs + 1);
+
+				// game finished
+				if (matchedPairs + 1 === NUM_PAIRS && (bestScore === null || bestScore > trials + 1))
+					setBestScore(trials + 1);
+
 			} else {	// cards not matched
 				setTimeout(() => {
 					newCardStates[lastFlipped] = newCardStates[i] = CARD_STATE_NOT_FLIPPED;
@@ -95,11 +101,12 @@ export default function Game() {
 
 	return <div className="game">
 		<div className="info">
-			Flipping card game
+			Flipping Cards
 		</div>
 
 		<div className="status">
-			Trials: {trials}, Matched: {matchedPairs} <button onClick={handleNewGame}>New game</button>
+			<p>Best score: {bestScore ?? '(Not available)'}</p>
+			<p>Trials: {trials}, Matched: {matchedPairs} <button onClick={handleNewGame}>New game</button></p>
 		</div>
 		
 		<div className="board">
