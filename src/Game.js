@@ -11,11 +11,11 @@ const CARD_STATE_FLIPPED = 2;
 const CARD_STATE_MATCHED = 3;
 
 
-function generateCards() {
+function generateCards(numPairs) {
 	const possibleCards = [...POSSIBLE_CARDS];
 	const cards = [];
 
-	for (let i = 0; i < NUM_PAIRS; i++) {
+	for (let i = 0; i < numPairs; i++) {
 		const t = Math.floor(Math.random() * possibleCards.length);
 		cards.push(possibleCards[t]);
 		cards.push(possibleCards[t]);
