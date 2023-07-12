@@ -14,10 +14,16 @@
 
 .status {
   text-align: center;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+
+.status p {
+  margin: 0;
 }
 
 .board {
-  background-color: #999;
+  background-color: #eee;
   border: 1px solid #888;
   text-align: center;
 }
@@ -30,6 +36,11 @@
   margin: 0.5rem;
   border-radius: 0.5rem;
   background-color: #44f;
+  border: 1px solid #ccc;
+}
+
+.card:not(.flipped):not(.matched) {
+  cursor: pointer;
 }
 
 .card.flipped {

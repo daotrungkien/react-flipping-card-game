@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 
-const NUM_PAIRS = 8;
+const NUM_PAIRS = 9;
 const POSSIBLE_CARDS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'].map(
 	a => ['♢', '♣', '♤', '♥'].map(b => a + b)).flat();
 
@@ -106,7 +106,8 @@ export default function Game() {
 
 		<div className="status">
 			<p>Best score: {bestScore ?? '(Not available)'}</p>
-			<p>Trials: {trials}, Matched: {matchedPairs} <button onClick={handleNewGame}>New game</button></p>
+			<p>Trials: {trials} • Matched: {matchedPairs}</p>
+			<p><button onClick={handleNewGame}>New game</button></p>
 		</div>
 		
 		<div className="board">
